@@ -15,6 +15,7 @@ class TestController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Country::where('name', 'Канада')->with('companies')->get();
+        $data = Country::where('name', 'Канада')->get();
+        return $data;
     }
 }
