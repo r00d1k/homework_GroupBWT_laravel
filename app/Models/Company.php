@@ -14,6 +14,6 @@ class Company extends Model
     }
 
     public function users() {
-//        return $this->
+        return $this->belongsToMany('App\Models\User');
     }
 }
