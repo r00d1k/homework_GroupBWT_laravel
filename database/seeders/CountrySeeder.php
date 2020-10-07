@@ -15,7 +15,7 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        Country::factory()->create(['name' => 'Канада']);
-        Country::factory(9)->create();
+        Country::factory()->hasCompanies(2)->create(['name' => 'Канада']);
+        Country::factory(9)->hasCompanies(2)->create();
     }
 }
