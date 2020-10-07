@@ -21,7 +21,7 @@ class AddUserToCompanySeeder extends Seeder
             /**
              * @var Company $company
              */
-            $company->users()->sync($users->random(rand(1,10)));
+            $company->users()->attach($users->random(rand(1,10)));
         });
     }
 }
