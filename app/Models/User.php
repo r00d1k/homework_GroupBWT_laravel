@@ -41,7 +41,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $with = ['companies'];
+
     public function companies() {
-        return $this->belongsToMany('App\Models\Company')->withTimestamps();
+        return $this->belongsToMany('App\Models\Company')->withTimestamps()->withPivot('status')->as('work_info');
     }
 }

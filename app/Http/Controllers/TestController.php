@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
@@ -15,7 +17,10 @@ class TestController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $data = Country::where('name', 'Канада')->get();
-        return $data;
+//        DB::connection()->enableQueryLog();
+        return User::whereHas('companies.country', function (Builder $query) {
+            $query->where('name','Канада');
+        })->get(['id', 'name']);
+//        dd(DB::getQueryLog());
     }
 }

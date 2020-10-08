@@ -14,8 +14,8 @@ class CreateCompanyUserTable extends Migration
     public function up()
     {
         Schema::create('company_user', function (Blueprint $table) {
-            $table->foreignId('company_id');
-            $table->foreignId('user_id');
+            $table->foreignId('company_id')->index();
+            $table->foreignId('user_id')->index();
             $table->enum('status', ['start', 'stop']);
             $table->timestamps();
         });
